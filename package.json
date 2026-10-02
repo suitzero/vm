@@ -1,0 +1,1 @@
+{"description":"Anytime VM: VALUE / REFINE / COMPOSE — computation as uncertainty reduction","devDependencies":{"typescript":"^5.6.0","vitest":"^2.1.0"},"name":"@suitzero/anytime-vm","scripts":{"build":"tsc -p tsconfig.json","test":"vitest run","typecheck":"tsc --noEmit -p tsconfig.json"},"type":"module","version":"0.1.0"}
