@@ -27,4 +27,4 @@ npm run build   # typecheck + build
 
 ## Status
 
-v0.1 — three primitives, two first experiments. `World = Value` comes next.
+v0.1 — design stage. Core not yet implemented.
