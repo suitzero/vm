@@ -45,14 +45,17 @@ Interface:
 interface Value<T> {
     current(): T        // current best estimate
     quality(): number   // higher = better; meaning defined by the value
-    refine(): Value<T>  // returns an improved value; never worse
+}
+
+interface Refiner<T> {
+    step(v: Value<T>): { value: Value<T>, cost: number }
 }
 ```
 
 ### The core invariant
 
 ```
-quality(refine(V)) >= quality(V)
+quality(step(V).value) >= quality(V)
 ```
 
 Computation is not the act of producing a value. **Computation is the act
@@ -70,7 +73,9 @@ with resources > 0 always yielding a result. There is no
 
 Do NOT force an (estimate, uncertainty) pair onto every value. Numbers are
 easy (`3.14 ± 0.01`); images, worlds, and behaviors are not. Each value
-kind defines what its quality means:
+kind defines what its quality means.
+
+**Quality convention:** Higher is always better. Error-type measures (like width, variance, or distance) should be converted to negative numbers (e.g., `quality = -width`).
 
 | Value kind           | quality() means                        |
 |----------------------|----------------------------------------|
